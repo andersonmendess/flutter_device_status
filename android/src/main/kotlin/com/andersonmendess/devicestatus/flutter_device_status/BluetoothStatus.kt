@@ -10,6 +10,18 @@ class BluetoothStatus {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
     }
 
+    fun isSupported(): Boolean {
+        return mBluetoothAdapter != null;
+    }
+
+    fun isOn() : Boolean {
+        return mBluetoothAdapter!!.isEnabled;
+    }
+
+    fun turnOn(): Boolean {
+        return mBluetoothAdapter!!.enable();
+    }
+
     fun isConnected(): Boolean {
         return (mBluetoothAdapter != null && mBluetoothAdapter!!.isEnabled
                 && mBluetoothAdapter!!.getProfileConnectionState(BluetoothHeadset.HEADSET) == BluetoothHeadset.STATE_CONNECTED)
